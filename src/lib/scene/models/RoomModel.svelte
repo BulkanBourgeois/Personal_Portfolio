@@ -8,7 +8,7 @@ Command: npx @threlte/gltf@3.0.1 static/models/room.glb -o src/lib/scene/models/
 
   import type { Snippet } from 'svelte'
   import { T, type Props } from '@threlte/core'
-  import { useGltf } from '@threlte/extras'
+  import { useDraco, useGltf } from '@threlte/extras'
 
   let {
     fallback,
@@ -58,7 +58,9 @@ Command: npx @threlte/gltf@3.0.1 static/models/room.glb -o src/lib/scene/models/
     }
   }
 
-  const gltf = useGltf<GLTFResult>('/models/room-transformed.glb')
+  const gltf = useGltf<GLTFResult>('/models/room-transformed.glb', {
+    dracoLoader: useDraco()
+  })
 </script>
 
 <T.Group
